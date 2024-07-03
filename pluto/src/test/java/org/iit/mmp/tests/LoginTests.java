@@ -14,7 +14,7 @@ public class LoginTests extends BaseClass {
 	@Test(dataProvider="DP")
 	public void validateInvLogin(String uname,String pword,String expected)
 	{
-		
+		//Inherit the driver instance from BaseClass
 		MMPLibrary mmpLib = new MMPLibrary(driver);
 		mmpLib.launchApplication(prop.getProperty("patienturl"));
 		mmpLib.login(uname, pword);
