@@ -9,7 +9,7 @@ import org.iit.mmp.patientmodule.pages.ScheduleAppointmentPage;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
+//Class file for ScheduleAppointmentTests
 public class ScheduleAppointmentTests_Modular extends BaseClass {
 	 
 	@Parameters({"doctor","duration"})
