@@ -3,7 +3,7 @@
 <suite name="Suite" verbose="5">
   <test thread-count="5" name="Test">
   <parameter name="doctor" value="Charlie" />
-  <parameter name="duration" value="200" />
+  <parameter name="duration" value="360" />
     <classes>
       <class name="org.iit.mmp.tests.ScheduleAppointmentTests_Modular"/>
     </classes>
