@@ -3,11 +3,7 @@
 <suite name="Suite" verbose="5">
   <test thread-count="3" name="Test">
   <parameter name="doctor" value="Charlie" />
-<<<<<<< HEAD
   <parameter name="duration" value="360" />
-=======
-  <parameter name="duration" value="120" />
->>>>>>> refs/remotes/origin/main
     <classes>
       <class name="org.iit.mmp.tests.ScheduleAppointmentTests_Modular"/>
     </classes>
