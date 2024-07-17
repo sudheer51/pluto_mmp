@@ -25,6 +25,7 @@ public class LoginTests extends BaseClass {
 	@DataProvider(name="DP")
 	public String[][] feedDP() throws IOException
 	{
+		//Read the XLSX file
 		String data[][]= Utility.readXLSX("MMPData.xlsx","data");
 		return data;
 	}
