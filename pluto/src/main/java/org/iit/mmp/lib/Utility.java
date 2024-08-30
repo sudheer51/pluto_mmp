@@ -3,6 +3,12 @@ package org.iit.mmp.lib;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -72,6 +78,54 @@ public class Utility {
 		String randString =(char)upperCaseChar+(char)lowerCaseChar+n+"";
 		System.out.println("Random String:::"+ randString);
 		return randString;
+	}
+	public static String[][] getDBValues(String uname,String pword,String dbname,String tableName,String hostip) throws ClassNotFoundException, SQLException 
+	{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		//	Driver driver = new Driver();
+		/*
+		 * url a database url of the form jdbc:subprotocol:subnameuser 
+		 * the database user on whose behalf the connection is being madepassword 
+		 * the user's password
+		 */
+		String url="jdbc:mysql://"+hostip+":3306/"+dbname;
+		String username=uname;
+		String password=pword;
+
+		Connection con = DriverManager.getConnection(url, username, password);
+		Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.CONCUR_READ_ONLY);
+		//int  value = stmt.executeUpdate("INSERT INTO `mmp`.`patient_data` VALUES (11,'James','22/11/2021');");
+		//System.out.println("The rows are updated "+ value);
+
+		ResultSet rs =  stmt.executeQuery("Select * from "+dbname+"."+tableName);
+		rs.last();
+
+		int rows = rs.getRow();
+		System.out.println("Number of rows " + rows);
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int cols = rsmd.getColumnCount();
+		System.out.println("Number of cols: "+ cols);
+
+		String data[][]= new String[rows][cols];
+		int i=0;
+		rs.beforeFirst();
+		///System.out.println(rs.getMetaData());
+		
+		while(rs.next())
+		{
+			for(int j=0;j<cols;j++)
+			{
+
+				data[i][j]=rs.getString(j+1);
+				System.out.print(data[i][j]+"--");
+				System.out.print("i :::"  + i +"@@@@"+"j:::::" + j);
+
+			}
+			System.out.println();
+			i++;
+		} 
+		return data;
 	}
 
 }
