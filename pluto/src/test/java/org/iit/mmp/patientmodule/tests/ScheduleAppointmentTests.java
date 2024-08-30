@@ -1,4 +1,4 @@
-package org.iit.mmp.tests;
+package org.iit.mmp.patientmodule.tests;
 
 import java.time.Duration;
 

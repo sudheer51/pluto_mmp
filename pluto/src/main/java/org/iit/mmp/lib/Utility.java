@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -23,10 +24,6 @@ public class Utility {
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
 		String formattedDate = sdf.format(d);
 		System.out.println("Formatted Date:::" + formattedDate);
-		String dateArr[] = formattedDate.split("/");
-		System.out.println(dateArr[0]);
-		System.out.println(dateArr[1]);
-		System.out.println(dateArr[2]);
 		return formattedDate;
 	}
 
@@ -64,6 +61,17 @@ public class Utility {
 		return dataArr;
 
 
+	}
+	public static String generateRandomString()
+	{
+		
+		Random rand = new Random();
+		int n = rand.nextInt(1000);//0 to 999
+		int upperCaseChar = 65+ rand.nextInt(26);
+		int lowerCaseChar = 97+ rand.nextInt(26);
+		String randString =(char)upperCaseChar+(char)lowerCaseChar+n+"";
+		System.out.println("Random String:::"+ randString);
+		return randString;
 	}
 
 }

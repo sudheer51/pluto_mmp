@@ -27,7 +27,7 @@ public class MMPLibrary {
 		//login
 		driver.findElement(By.id("username")).sendKeys(uname);
 		driver.findElement(By.id("password")).sendKeys(pword);
-		driver.findElement(By.name("submit")).click();
+		driver.findElement(By.xpath("//input[@value='Sign In']")).click();
 	}
 	public String fetchTitle()
 	{
@@ -37,6 +37,10 @@ public class MMPLibrary {
 	{
 		String text = driver.findElement(By.xpath("//div[text()='"+expected+"']")).getText();
 		return text;
+	}
+	public void logout()
+	{
+		driver.findElement(By.xpath("//span[contains(text(),'Logout')]")).click();
 	}
 
 }
